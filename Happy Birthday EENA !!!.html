@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Someone Special 🤍</title>
+
+<style>
+body{
+    margin:0;
+    padding:0;
+    overflow:hidden;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to top, #ffd6e7, #fff0f5);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+/* Falling hearts */
+.heart{
+    position:absolute;
+    color:#ff4d6d;
+    font-size:20px;
+    animation: fall linear infinite;
+}
+
+@keyframes fall{
+    0%{
+        transform: translateY(-10vh);
+        opacity:1;
+    }
+    100%{
+        transform: translateY(110vh);
+        opacity:0;
+    }
+}
+
+/* Envelope */
+.envelope{
+    position:relative;
+    width:250px;
+    height:180px;
+    background:#ff8fab;
+    border-radius:10px;
+    cursor:pointer;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+    transition:0.5s;
+}
+
+.envelope:hover{
+    transform:scale(1.05);
+}
+
+.envelope::before{
+    content:"🤍";
+    font-size:60px;
+}
+
+/* Letter */
+.letter{
+    position:absolute;
+    width:80%;
+    max-width:600px;
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 20px 40px rgba(0,0,0,0.3);
+    display:none;
+    text-align:center;
+    line-height:1.6;
+    animation: fadeIn 1s ease forwards;
+}
+
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(30px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+.close{
+    margin-top:20px;
+    cursor:pointer;
+    font-weight:bold;
+    color:#ff4d6d;
+}
+</style>
+</head>
+
+<body>
+
+<div class="envelope" onclick="openLetter()"></div>
+
+<div class="letter" id="letter">
+    <h2>Happy Birthday 🤍</h2>
+    <p>
+    Happy Birthday to the girl who makes my heart feel warm in the most unexpected ways.
+    I just want you to know how much you mean to me. You’re not just my friend — you’re someone I care about deeply.
+    Being around you feels like peace, like laughter, like home.
+    If life ever feels heavy, I hope you remember you don’t have to carry it alone.
+    With me, you can be completely yourself. No pretending, no hiding. Just you.
+    And I’ll always choose you.
+    And I hope one day you realize how much you deserve to be cherished — especially by someone who sees you the way I do.
+    </p>
+
+    <h3>🤍😘 “No matter where life takes us, I’ll always be one call away.” 😘🤍</h3>
+
+    <div class="close" onclick="closeLetter()">Close 🤍</div>
+</div>
+
+<script>
+function openLetter(){
+    document.querySelector('.envelope').style.display = 'none';
+    document.getElementById('letter').style.display = 'block';
+}
+
+function closeLetter(){
+    document.getElementById('letter').style.display = 'none';
+    document.querySelector('.envelope').style.display = 'flex';
+}
+
+/* Create falling hearts */
+function createHeart(){
+    const heart = document.createElement('div');
+    heart.classList.add('heart');
+    heart.innerHTML = "❤";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 5000);
+}
+
+setInterval(createHeart, 300);
+</script>
+
+</body>
+</html>
